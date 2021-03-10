@@ -2,6 +2,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -30,7 +31,7 @@ public class GroupTest {
         group.addStudent("Petr Petrov");
         group.deleteStudent("Vasya Pupkin");
         group.deleteStudent("Petr Petrov");
-        List<Student> expected = Arrays.asList(
+        List<Student> expected = Collections.singletonList(
                 new Student("Ivan Ivanov")
         );
         Assert.assertEquals(expected, group.getStudents());
@@ -55,7 +56,7 @@ public class GroupTest {
         group.addSubject("History");
         group.deleteSubject("Language");
         group.deleteSubject("History");
-        List<String> expected = Arrays.asList("Mathematics");
+        List<String> expected = Collections.singletonList("Mathematics");
         Assert.assertEquals(expected, group.getSubjects());
     }
 
@@ -121,9 +122,9 @@ public class GroupTest {
         int actualMark1 = group.getMark("Vasya Pupkin", "Language");
         int actualMark2 = group.getMark("Ivan Ivanov", "Mathematics");
         int actualMark3 = group.getMark("Ivan Ivanov", "Language");
-        assertTrue(actualMark == 5);
-        assertTrue(actualMark1 == 4);
-        assertTrue(actualMark2 == 3);
-        assertTrue(actualMark3 == 2);
+        assertEquals(5, actualMark);
+        assertEquals(4, actualMark1);
+        assertEquals(3, actualMark2);
+        assertEquals(2, actualMark3);
     }
 }
