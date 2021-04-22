@@ -14,7 +14,7 @@ public class Student {
         return name;
     }
 
-    public void addMark(String subject, Integer mark) {
+    public void addMark(String subject, int mark) {
         if (marks.containsKey(subject)) {
             throw new RuntimeException("Mark already exists");
         }
@@ -25,7 +25,7 @@ public class Student {
         marks.remove(subject);
     }
 
-    public void changeMark(String subject, Integer mark) {
+    public void changeMark(String subject, int mark) {
         marks.put(subject, mark);
     }
 

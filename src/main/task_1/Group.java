@@ -1,5 +1,9 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
+import java.util.function.Consumer;
+import java.util.function.Function;
 
 public class Group {
     private final String number;
@@ -73,6 +77,8 @@ public class Group {
         student.changeMark(subject, mark);
     }
 
+
+
     public Integer getMark(String name, String subject) {
         Student student = findStudent(name);
         if (student == null) {
@@ -82,11 +88,16 @@ public class Group {
     }
 
     public List<Student> getStudents() {
-        return students;
+        return Collections.unmodifiableList(students);
     }
 
     public List<String> getSubjects() {
         return subjects;
+    }
+
+    public void handleStudent(String name, Consumer<Student> func){
+        Student student = findStudent(name);
+        func.accept(student);
     }
 
 }
