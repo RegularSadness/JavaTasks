@@ -45,11 +45,11 @@ public class Group {
 
     public void addMark(String name, String subject, Integer mark) {
         if (!subjects.contains(subject)) {
-            throw new RuntimeException("Subject doesn't exist");
+            throw new IllegalArgumentException("Subject doesn't exist");
         }
         Student student = findStudent(name);
         if (student == null) {
-            throw new RuntimeException("Student doesn't exist");
+            throw new IllegalArgumentException("Student doesn't exist");
         }
         student.addMark(subject, mark);
     }
@@ -57,22 +57,22 @@ public class Group {
 
     public void deleteMark(String name, String subject) {
         if (!subjects.contains(subject)) {
-            throw new RuntimeException("Subject doesn't exist");
+            throw new IllegalArgumentException("Subject doesn't exist");
         }
         Student student = findStudent(name);
         if (student == null) {
-            throw new RuntimeException("Student doesn't exist");
+            throw new IllegalArgumentException("Student doesn't exist");
         }
         student.deleteMark(subject);
     }
 
     public void changeMark(String name, String subject, Integer mark) {
         if (!subjects.contains(subject)) {
-            throw new RuntimeException("Subject doesn't exist");
+            throw new IllegalArgumentException("Subject doesn't exist");
         }
         Student student = findStudent(name);
         if (student == null) {
-            throw new RuntimeException("Student doesn't exist");
+            throw new IllegalArgumentException("Student doesn't exist");
         }
         student.changeMark(subject, mark);
     }
@@ -82,7 +82,7 @@ public class Group {
     public Integer getMark(String name, String subject) {
         Student student = findStudent(name);
         if (student == null) {
-            throw new RuntimeException("Student doesn't exist");
+            throw new IllegalArgumentException("Student doesn't exist");
         }
         return student.getMark(subject);
     }
