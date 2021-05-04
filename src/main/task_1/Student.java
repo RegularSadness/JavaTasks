@@ -29,7 +29,7 @@ public class Student {
         marks.put(subject, mark);
     }
 
-    public Integer getMark(String subject) {
+    public int getMark(String subject) {
         return marks.get(subject);
     }
 

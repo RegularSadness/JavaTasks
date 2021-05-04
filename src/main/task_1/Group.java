@@ -32,7 +32,7 @@ public class Group {
         for (Student student : students) {
             student.deleteMark(subject);
         }
-    }
+}
 
     private Student findStudent(String name) {
         for (Student student : students) {
@@ -43,43 +43,7 @@ public class Group {
         return null;
     }
 
-    public void addMark(String name, String subject, Integer mark) {
-        if (!subjects.contains(subject)) {
-            throw new IllegalArgumentException("Subject doesn't exist");
-        }
-        Student student = findStudent(name);
-        if (student == null) {
-            throw new IllegalArgumentException("Student doesn't exist");
-        }
-        student.addMark(subject, mark);
-    }
-
-
-    public void deleteMark(String name, String subject) {
-        if (!subjects.contains(subject)) {
-            throw new IllegalArgumentException("Subject doesn't exist");
-        }
-        Student student = findStudent(name);
-        if (student == null) {
-            throw new IllegalArgumentException("Student doesn't exist");
-        }
-        student.deleteMark(subject);
-    }
-
-    public void changeMark(String name, String subject, Integer mark) {
-        if (!subjects.contains(subject)) {
-            throw new IllegalArgumentException("Subject doesn't exist");
-        }
-        Student student = findStudent(name);
-        if (student == null) {
-            throw new IllegalArgumentException("Student doesn't exist");
-        }
-        student.changeMark(subject, mark);
-    }
-
-
-
-    public Integer getMark(String name, String subject) {
+    public int getMark(String name, String subject) {
         Student student = findStudent(name);
         if (student == null) {
             throw new IllegalArgumentException("Student doesn't exist");

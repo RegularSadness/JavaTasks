@@ -65,40 +65,28 @@ public class GroupTest {
         Group group = new Group("213/3");
         group.addStudent("Vasya Pupkin");
         group.addSubject("Mathematics");
-        group.addMark("Vasya Pupkin", "Mathematics", 5 );
-        group.addMark("Vasya Pupkin", "Mathematics", 4 );
+        group.handleStudent("Vasya Pupkin", (student)-> student.addMark("Mathematics", 5));
+        group.handleStudent("Vasya Pupkin", (student)-> student.addMark("Mathematics", 4));
     }
 
     @Test
     public void addMark() {
         Group group = new Group("213/3");
         group.addStudent("Vasya Pupkin");
-        group.addStudent("Ivan Ivanov");
         group.addSubject("Mathematics");
-        group.addSubject("Language");
-//        group.addMark("Vasya Pupkin", "Mathematics", 5);
         group.handleStudent("Vasya Pupkin", (student)-> student.addMark("Mathematics", 5));
-        group.addMark("Vasya Pupkin", "Language", 4);
-        group.addMark("Ivan Ivanov", "Mathematics", 3);
-        group.addMark("Ivan Ivanov", "Language", 2);
         assertEquals(5, (int) group.getMark("Vasya Pupkin", "Mathematics"));
-        assertEquals(4, (int) group.getMark("Vasya Pupkin", "Language"));
-        assertEquals(3, (int) group.getMark("Ivan Ivanov", "Mathematics"));
-        assertEquals(2, (int) group.getMark("Ivan Ivanov", "Language"));
 
 
     }
 
-    @Test (expected = RuntimeException.class)
+    @Test
     public void delMark() {
         Group group = new Group("213/3");
         group.addStudent("Vasya Pupkin");
         group.addSubject("Language");
-        group.addMark("Vasya Pupkin", "Language", 5 );
+        group.handleStudent("Vasya Pupkin", (student)-> student.addMark("Language", 5));
         group.handleStudent("Vasya Pupkin", (student)-> student.deleteMark("Language"));
-        group.deleteMark("Vasya Pupkin", "Language" );
-
-
     }
 
     @Test
@@ -106,8 +94,8 @@ public class GroupTest {
         Group group = new Group("213/3");
         group.addStudent("Vasya Pupkin");
         group.addSubject("Mathematics");
-        group.addMark("Vasya Pupkin", "Mathematics", 5);
-        group.changeMark("Vasya Pupkin", "Mathematics", 2);
+        group.handleStudent("Vasya Pupkin", (student)-> student.addMark("Mathematics", 5));
+        group.handleStudent("Vasya Pupkin", (student)-> student.changeMark("Mathematics", 2));
         assertEquals(2, (int) group.getMark("Vasya Pupkin", "Mathematics"));
     }
 
@@ -115,20 +103,9 @@ public class GroupTest {
     public void getMark() {
         Group group = new Group("213/3");
         group.addStudent("Vasya Pupkin");
-        group.addStudent("Ivan Ivanov");
         group.addSubject("Mathematics");
-        group.addSubject("Language");
-        group.addMark("Vasya Pupkin", "Mathematics", 5);
-        group.addMark("Vasya Pupkin", "Language", 4);
-        group.addMark("Ivan Ivanov", "Mathematics", 3);
-        group.addMark("Ivan Ivanov", "Language", 2);
+        group.handleStudent("Vasya Pupkin", (student)-> student.addMark("Mathematics", 5));
         int actualMark = group.getMark("Vasya Pupkin", "Mathematics");
-        int actualMark1 = group.getMark("Vasya Pupkin", "Language");
-        int actualMark2 = group.getMark("Ivan Ivanov", "Mathematics");
-        int actualMark3 = group.getMark("Ivan Ivanov", "Language");
         assertEquals(5, actualMark);
-        assertEquals(4, actualMark1);
-        assertEquals(3, actualMark2);
-        assertEquals(2, actualMark3);
     }
 }
