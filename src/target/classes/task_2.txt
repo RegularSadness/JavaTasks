@@ -8,8 +8,6 @@ Command Line: ciphxor [-c key] [-d key] inputname.txt [-o outputname.txt]
 Кроме самой программы, следует написать автоматические тесты к ней.
 
 
-z nt,z
-
 
 Смотрю ваши задания, есть ряд вопросов
 
