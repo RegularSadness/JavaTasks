@@ -40,7 +40,41 @@ public class Group {
                 return student;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Student doesn't exist");
+    }
+
+    public void addMark(String name, String subject, int mark) {
+        if (!subjects.contains(subject)) {
+            throw new IllegalArgumentException("Subject doesn't exist");
+        }
+        Student student = findStudent(name);
+        if (student == null) {
+            throw new IllegalArgumentException("Student doesn't exist");
+        }
+        student.addMark(subject, mark);
+    }
+
+
+    public void deleteMark(String name, String subject) {
+        if (!subjects.contains(subject)) {
+            throw new IllegalArgumentException("Subject doesn't exist");
+        }
+        Student student = findStudent(name);
+        if (student == null) {
+            throw new IllegalArgumentException("Student doesn't exist");
+        }
+        student.deleteMark(subject);
+    }
+
+    public void changeMark(String name, String subject, int mark) {
+        if (!subjects.contains(subject)) {
+            throw new IllegalArgumentException("Subject doesn't exist");
+        }
+        Student student = findStudent(name);
+        if (student == null) {
+            throw new IllegalArgumentException("Student doesn't exist");
+        }
+        student.changeMark(subject, mark);
     }
 
     public int getMark(String name, String subject) {
